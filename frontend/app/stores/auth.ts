@@ -1,5 +1,5 @@
 export const useAuth = defineStore("auth", () => {
-    const user = ref(null);
+    const isAuthenticated = ref(false);
 
-    return { user };
+    return { isAuthenticated };
 });
