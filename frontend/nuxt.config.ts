@@ -5,4 +5,10 @@ export default defineNuxtConfig({
     modules: ["@nuxt/ui", "@nuxt/fonts", "@pinia/nuxt"],
 
     css: ["~/assets/css/main.css"],
+
+    runtimeConfig: {
+        public: {
+            apiUrl: process.env.API_URL || "http://localhost:8000",
+        },
+    },
 });
