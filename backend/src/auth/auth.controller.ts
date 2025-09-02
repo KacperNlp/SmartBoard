@@ -1,13 +1,12 @@
 import { Controller, Post, Body, Req, Res } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
+import { RegisterDto } from './register.dto';
+import { LoginDto } from './login.dto';
+import type { Response, Request } from 'express';
 
 @Controller('auth')
 export class AuthController {
-    constructor(
-        private readonly authService: AuthService,
-        private readonly jwtService: JwtService,
-    ) {}
+    constructor(private readonly authService: AuthService) {}
 
     @Post('register')
     async register(@Body() registerDto: RegisterDto, @Res() res: Response) {
@@ -21,7 +20,7 @@ export class AuthController {
             path: '/auth/refresh',
         });
 
-        return { accessToken: result.accessToken, user: result.user };
+        res.json({ accessToken: result.accessToken, user: result.user });
     }
 
     @Post('login')
@@ -36,7 +35,7 @@ export class AuthController {
             path: '/auth/refresh',
         });
 
-        return { accessToken: result.accessToken, user: result.user };
+        res.json({ accessToken: result.accessToken, user: result.user });
     }
 
     @Post('logout')

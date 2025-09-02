@@ -1,19 +1,22 @@
-import {
-    Injectable,
-    Response,
-    Request,
-    UnauthorizedException,
-} from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { UserService } from '../user/user.service';
+import { LoginDto } from './login.dto';
+import { RegisterDto } from './register.dto';
+import type { Response } from 'express';
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly jwtService: JwtService) {}
+    constructor(
+        private readonly jwtService: JwtService,
+        private readonly userService: UserService,
+    ) {}
 
     async register(registerDto: RegisterDto) {
         const { email, password, name } = registerDto;
 
-        const user = await this.usersService.findByEmail(email);
+        const user = await this.userService.findByEmail(email);
 
         if (user) {
             throw new UnauthorizedException('Email already exists');
@@ -21,7 +24,7 @@ export class AuthService {
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
-        const newUser = await this.usersService.create({
+        const newUser = await this.userService.create({
             name,
             email,
             password: hashedPassword,
@@ -55,9 +58,9 @@ export class AuthService {
     }
 
     async login(loginDto: LoginDto) {
-        const { email, password } = req.body;
+        const { email, password } = loginDto;
 
-        const user = await this.usersService.findByEmail(email);
+        const user = await this.userService.findByEmail(email);
 
         if (!user) {
             throw new UnauthorizedException('Invalid email');
@@ -112,7 +115,12 @@ export class AuthService {
                 secret: process.env.JWT_REFRESH_SECRET,
             });
 
-            const user = await this.usersService.findById(payload.sub);
+            const user = await this.userService.findById(payload.sub);
+
+            if (!user) {
+                throw new UnauthorizedException('Invalid refresh token');
+            }
+
             const newAccessToken = this.jwtService.sign(
                 {
                     sub: user.id,
