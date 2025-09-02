@@ -2,7 +2,7 @@
 const toast = useToast();
 
 const user = reactive({
-    name: "",
+    email: "",
     password: "",
 });
 
@@ -43,12 +43,12 @@ async function onSubmit() {
                 </template>
 
                 <UForm :state="user" class="form">
-                    <UFormField label="Name" name="name" class="form-field">
-                        <UInput v-model="user.name" />
+                    <UFormField label="Email" name="email" class="form-field">
+                        <UInput v-model="user.email" type="email" />
                     </UFormField>
 
-                    <UFormField label="Password" name="password" class="form-field" type="password">
-                        <UInput v-model="user.password" />
+                    <UFormField label="Password" name="password" class="form-field">
+                        <UInput v-model="user.password" type="password" />
                     </UFormField>
                 </UForm>
 
