@@ -45,25 +45,24 @@ async function onSubmit() {
                 </template>
 
                 <UForm :state="user" class="form">
-                    <UFormField label="Name" name="name" class="form-field">
-                        <UInput v-model="user.name" />
+                    <UFormField label="Name" class="form-field">
+                        <UInput v-model="user.name" name="name" />
                     </UFormField>
 
-                    <UFormField label="Email" name="email" class="form-field" type="email">
-                        <UInput v-model="user.email" />
+                    <UFormField label="Email" class="form-field">
+                        <UInput v-model="user.email" name="email" type="email" />
                     </UFormField>
 
-                    <UFormField label="Password" name="password" class="form-field" type="password">
-                        <UInput v-model="user.password" />
+                    <UFormField label="Password" class="form-field">
+                        <UInput v-model="user.password" name="password" type="password" />
                     </UFormField>
 
-                    <UFormField
-                        label="Confirm Password"
-                        name="confirmPassword"
-                        class="form-field"
-                        type="password"
-                    >
-                        <UInput v-model="user.confirmPassword" />
+                    <UFormField label="Confirm Password" class="form-field">
+                        <UInput
+                            v-model="user.confirmPassword"
+                            name="confirmPassword"
+                            type="password"
+                        />
                     </UFormField>
                 </UForm>
 
