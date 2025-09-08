@@ -11,22 +11,6 @@ export default defineEventHandler(async (event) => {
             },
         });
 
-        setCookie(event, "access-token", response.token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 60 * 15,
-            sameSite: "strict",
-            path: "/",
-        });
-
-        setCookie(event, "refresh-token", response.refreshToken, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 60 * 60 * 24 * 30,
-            sameSite: "strict",
-            path: "/",
-        });
-
         return {
             message: "Register successful",
             user: response.user,

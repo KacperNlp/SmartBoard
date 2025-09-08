@@ -1,4 +1,5 @@
 <script setup>
+const auth = useAuth();
 const toast = useToast();
 
 const user = reactive({
@@ -8,10 +9,7 @@ const user = reactive({
 
 async function onSubmit() {
     try {
-        const response = await $fetch("/api/auth/login", {
-            method: "POST",
-            body: user,
-        });
+        const response = await auth.login(user);
 
         if (!response.ok) {
             throw new Error(response.error);
