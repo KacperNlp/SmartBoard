@@ -25,7 +25,7 @@ async function onSubmit() {
             color: "green",
         });
 
-        navigateTo("/dashboard");
+        navigateTo("/");
     } catch {
         toast.add({
             title: "Register",

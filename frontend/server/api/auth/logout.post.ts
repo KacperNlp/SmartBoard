@@ -1,6 +1,7 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
 
+    console.log("Logout");
     try {
         const accessToken = getCookie(event, "access-token");
         if (accessToken) {
@@ -13,10 +14,7 @@ export default defineEventHandler(async (event) => {
                     },
                 });
             } catch (error) {
-                throw createError({
-                    statusCode: 401,
-                    statusMessage: "Invalid or expired token",
-                });
+                console.error("Network server error during logout");
             }
         }
 
@@ -27,7 +25,7 @@ export default defineEventHandler(async (event) => {
         });
 
         deleteCookie(event, "refresh-token", {
-            path: "/auth/refresh",
+            path: "/",
             sameSite: "strict",
             secure: true,
         });

@@ -1,19 +1,25 @@
+import type { User } from "@/types/index";
+
 export const useAuth = defineStore("auth", () => {
     const isAuthenticated = ref(false);
-    const user = ref(null);
+    const user = ref<User | null>(null);
     const isLoading = ref(false);
 
     const checkAuth = async () => {
-        isLoading.value = true;
-
         try {
             isLoading.value = true;
             const response = await $fetch("/api/auth/me");
+
             isAuthenticated.value = true;
             user.value = response.user;
         } catch (err) {
-            isAuthenticated.value = false;
-            user.value = null;
+            if (err.status === 401 || err.status === 403) {
+                await logout();
+            } else {
+                isAuthenticated.value = false;
+                user.value = null;
+                console.error("Network server error during auth checking");
+            }
         } finally {
             isLoading.value = false;
         }
@@ -42,7 +48,9 @@ export const useAuth = defineStore("auth", () => {
         isLoading.value = true;
 
         try {
-            await $fetch("/api/auth/logout");
+            await $fetch("/api/auth/logout", {
+                method: "POST",
+            });
         } catch (err) {
             throw err;
         } finally {

@@ -21,40 +21,21 @@ export class AuthController {
     async register(@Body() registerDto: RegisterDto, @Res() res: Response) {
         const result = await this.authService.register(registerDto);
 
-        res.cookie('refresh-token', result.refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 30 * 24 * 60 * 60 * 1000,
-            sameSite: 'strict',
-            path: '/auth/refresh',
+        res.json({
+            accessToken: result.accessToken,
+            refreshToken: result.refreshToken,
+            user: result.user,
         });
-
-        res.json({ accessToken: result.accessToken, user: result.user });
     }
 
     @Post('login')
     async login(@Body() loginDto: LoginDto, @Res() res: Response) {
         const result = await this.authService.login(loginDto);
 
-        res.cookie('refresh-token', result.refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 30 * 24 * 60 * 60 * 1000,
-            sameSite: 'strict',
-            path: '/auth/refresh',
-        });
-
-        res.cookie('access-token', result.accessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 15 * 60 * 1000,
-            sameSite: 'strict',
-            path: '/',
-        });
-
         res.json({
             user: result.user,
             accessToken: result.accessToken,
+            refreshToken: result.refreshToken,
         });
     }
 
@@ -66,7 +47,9 @@ export class AuthController {
     @Post('refresh')
     async refreshToken(@Req() req: Request, @Res() res: Response) {
         const refreshToken = req.cookies['refresh-token'];
-        return this.authService.refreshToken(refreshToken);
+        const newToken = await this.authService.refreshToken(refreshToken);
+
+        res.json({ accessToken: newToken.accessToken });
     }
 
     @Get('me')

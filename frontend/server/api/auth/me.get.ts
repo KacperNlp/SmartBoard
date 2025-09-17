@@ -1,3 +1,5 @@
+import type { Response } from "./types";
+
 export default defineEventHandler(async (event) => {
     const accessToken = getCookie(event, "access-token");
     const config = useRuntimeConfig();
@@ -10,7 +12,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const response = await $fetch(`${config.public.apiUrl}/auth/me`, {
+        const response = await $fetch<Response>(`${config.public.apiUrl}/auth/me`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
