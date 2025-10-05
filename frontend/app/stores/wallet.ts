@@ -8,6 +8,7 @@ export interface Wallet {
     name: string;
     currency: string;
     value: number;
+    deposits: number;
 }
 
 export const useWallet = defineStore("wallet", () => {
@@ -24,12 +25,21 @@ export const useWallet = defineStore("wallet", () => {
             name: "Portfel 1",
             currency: "PLN",
             value: 100000,
+            deposits: 89000,
         },
         {
             id: 2,
             name: "Portfel 2",
             currency: "PLN",
             value: 200000,
+            deposits: 150000,
+        },
+        {
+            id: 3,
+            name: "Portfel ETF",
+            currency: "EUR",
+            value: 30000,
+            deposits: 25000,
         },
     ]);
 
@@ -94,6 +104,18 @@ export const useWallet = defineStore("wallet", () => {
         wallets.value.push(wallet);
     };
 
+    const getWalletProfit = (wallet: Wallet) => {
+        return wallet.value - wallet.deposits;
+    };
+
+    const getWalletRateOfReturn = (wallet: Wallet) => {
+        return ((wallet.value - wallet.deposits) / wallet.deposits) * 100;
+    };
+
+    const removeWallet = (id: number) => {
+        wallets.value = wallets.value.filter((wallet) => wallet.id !== id);
+    };
+
     return {
         walletSummary,
         walletDailyProfit,
@@ -107,5 +129,8 @@ export const useWallet = defineStore("wallet", () => {
         walletSectorsLabels,
         wallets,
         addWallet,
+        getWalletProfit,
+        getWalletRateOfReturn,
+        removeWallet,
     };
 });
