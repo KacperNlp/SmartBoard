@@ -1,0 +1,70 @@
+{
+    "common": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "close": "Close",
+        "loading": "Loading…",
+        "actions": "Actions",
+        "yes": "Yes",
+        "no": "No",
+        "back": "Back",
+        "next": "Next"
+    },
+    "auth": {
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "signIn": "Sign in",
+        "signUp": "Sign up"
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "wallets": "Wallets",
+        "settings": "Settings"
+    },
+    "dashboard": {
+        "welcome": "Welcome",
+        "walletSummary": "Wallet summary",
+        "addWallet": "Add wallet",
+        "totalBalance": "Total balance",
+        "recentActivity": "Recent activity",
+        "welcomeDescription": "Add your first wallets to start monitoring your investments.",
+        "walletsValue": "Wallets value",
+        "walletDailyProfit": "Wallet daily profit",
+        "walletCurrentProfit": "Wallet current profit",
+        "walletTotalProfit": "Wallet total profit",
+        "walletRateOfReturn": "Wallet rate of return",
+        "walletAverageAnnualReturn": "Wallet average annual return",
+        "walletValuesIncrease": "Wallet values increase",
+        "walletValuesDecrease": "Wallet values decrease"
+    },
+    "wallet": {
+        "name": "Wallet name",
+        "balance": "Balance",
+        "currency": "Currency",
+        "add": "Add wallet",
+        "edit": "Edit wallet",
+        "delete": "Delete wallet",
+        "createSuccess": "Wallet created",
+        "updateSuccess": "Wallet updated",
+        "deleteSuccess": "Wallet deleted"
+    },
+    "validation": {
+        "required": "This field is required",
+        "email": "Enter a valid email",
+        "minLength": "Too short",
+        "maxLength": "Too long"
+    },
+    "errors": {
+        "network": "Network error. Try again later.",
+        "unknown": "An unknown error occurred."
+    }
+}

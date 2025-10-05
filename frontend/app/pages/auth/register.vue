@@ -41,19 +41,19 @@ async function onSubmit() {
         <div class="wrapper">
             <UCard class="card">
                 <template #header>
-                    <h1 class="headline">Register</h1>
+                    <h1 class="headline">{{ $t("auth.register") }}</h1>
                 </template>
 
                 <UForm :state="user" class="form">
-                    <UFormField label="Name" class="form-field">
+                    <UFormField :label="$t('auth.name')" class="form-field">
                         <UInput v-model="user.name" name="name" />
                     </UFormField>
 
-                    <UFormField label="Email" class="form-field">
+                    <UFormField :label="$t('auth.email')" class="form-field">
                         <UInput v-model="user.email" name="email" type="email" />
                     </UFormField>
 
-                    <UFormField label="Password" class="form-field">
+                    <UFormField :label="$t('auth.password')" class="form-field">
                         <UInput v-model="user.password" name="password" type="password" />
                     </UFormField>
 
@@ -68,8 +68,8 @@ async function onSubmit() {
 
                 <template #footer>
                     <div class="footer-btns">
-                        <UButton type="submit" @click="onSubmit">Register</UButton>
-                        <UButton to="/auth/login" variant="outline">Login</UButton>
+                        <UButton type="submit" @click="onSubmit">{{ $t("auth.register") }}</UButton>
+                        <UButton to="/auth/login" variant="outline">{{ $t("auth.login") }}</UButton>
                     </div>
                 </template>
             </UCard>

@@ -1,0 +1,71 @@
+{
+    "common": {
+        "ok": "OK",
+        "cancel": "Anuluj",
+        "save": "Zapisz",
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "close": "Zamknij",
+        "loading": "Ładowanie…",
+        "actions": "Akcje",
+        "yes": "Tak",
+        "no": "Nie",
+        "back": "Wstecz",
+        "next": "Dalej"
+    },
+    "auth": {
+        "login": "Logowanie",
+        "logout": "Wyloguj",
+        "register": "Rejestracja",
+        "email": "E‑mail",
+        "password": "Hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "rememberMe": "Zapamiętaj mnie",
+        "forgotPassword": "Zapomniałeś hasła?",
+        "signIn": "Zaloguj się",
+        "signUp": "Zarejestruj się"
+    },
+    "nav": {
+        "dashboard": "Pulpit",
+        "wallets": "Portfele",
+        "settings": "Ustawienia"
+    },
+    "dashboard": {
+        "welcome": "Witaj",
+        "walletSummary": "Podsumowanie portfela",
+        "addWallet": "Dodaj portfel",
+        "totalBalance": "Suma środków",
+        "recentActivity": "Ostatnia aktywność",
+        "welcomeDescription": "Dodaj swoje pierwsze portfele, aby rozpocząć monitorowanie swoich inwestycji.",
+        "walletsValue": "Wartość portfeli",
+        "walletDailyProfit": "Zysk dzienny",
+        "walletCurrentProfit": "Zysk bieżący",
+        "walletTotalProfit": "Zysk całkowity",
+        "walletRateOfReturn": "Stopa zwrotu",
+        "walletAverageAnnualReturn": "Średnia roczna stopa zwrotu",
+        "walletValuesIncrease": "Walorów wzrosło",
+        "walletValuesDecrease": "Walorów spadło",
+        "walletsList": "Portfele"
+    },
+    "wallet": {
+        "name": "Nazwa portfela",
+        "balance": "Saldo",
+        "currency": "Waluta",
+        "add": "Dodaj portfel",
+        "edit": "Edytuj portfel",
+        "delete": "Usuń portfel",
+        "createSuccess": "Portfel został utworzony",
+        "updateSuccess": "Portfel został zaktualizowany",
+        "deleteSuccess": "Portfel został usunięty"
+    },
+    "validation": {
+        "required": "To pole jest wymagane",
+        "email": "Podaj poprawny adres e‑mail",
+        "minLength": "Zbyt krótka wartość",
+        "maxLength": "Zbyt długa wartość"
+    },
+    "errors": {
+        "network": "Błąd sieci. Spróbuj ponownie później.",
+        "unknown": "Wystąpił nieznany błąd."
+    }
+}
